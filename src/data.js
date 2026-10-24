@@ -8,11 +8,13 @@ export const CONSENT_COPY = {
   buttonLabel: "Continue",
 };
 
-export const DEBRIEF_COPY = {
+export const getDebriefCopy = (variant = "A") => ({
   title: "Study Debrief",
-  message: `No sign-up was made. This was a class prototype of a fictional brand, JAYLINK. All plans, prices, discounts and contract terms shown were simulated for a class study, and nothing was recorded. You saw Variant ${VARIANT}.`,
+  message: `No sign-up was made. This was a class prototype of a fictional brand, JAYLINK. All plans, prices, discounts and contract terms shown were simulated for a class study, and nothing was recorded. You saw Variant ${variant}.`,
   buttonLabel: "Back to start",
-};
+});
+
+export const DEBRIEF_COPY = getDebriefCopy("A");
 
 export const HEADER_COPY = {
   brand: {
@@ -59,6 +61,21 @@ export const PLANS_DATA = [
       "500 mins from SG to 16 destinations (Local outgoing mins will also be deducted)",
       "Free Caller ID & local incoming calls",
     ],
+    groupedBenefits: {
+      local: ["Free 5G+ Access"],
+      roaming: [
+        "5GB roaming data for use in mainland China and Hong Kong SAR",
+        "31GB APAC 12 roaming data for use in Australia, China (including Hong Kong, Macau and Taiwan), Indonesia, Japan, Malaysia, Philippines, South Korea, Thailand and Vietnam",
+        "1TB shared roaming data for use in Indonesia, Malaysia and Thailand for 365 days (for new sign-ups only)",
+        "60GB International Roaming data for use in 210 destinations for 365 days (for new and port-in only)",
+      ],
+      callsAndSms: [
+        "650 mins local calls",
+        "100 local SMS",
+        "500 mins from SG to 16 destinations (Local outgoing mins will also be deducted)",
+        "Free Caller ID & local incoming calls",
+      ],
+    },
     afterContractTitle: "After contract period,",
     afterContract: [
       "720GB will change to 700GB",
@@ -135,6 +152,21 @@ export const PLANS_DATA = [
       "500 mins from SG to 16 destinations (Local outgoing mins will also be deducted)",
       "Free Caller ID & local incoming calls",
     ],
+    groupedBenefits: {
+      local: ["Free 5G+ Access"],
+      roaming: [
+        "65GB roaming data for use in mainland China and Hong Kong SAR",
+        "33GB APAC 10 roaming data for use in Australia, China Macau, China Taiwan, Indonesia, Japan, Malaysia, Philippines, South Korea, Thailand and Vietnam",
+        "600GB shared roaming data across Indonesia, Malaysia and Thailand valid for 365 days (for new sign-ups only)",
+        "60GB International Roaming data for use in 210 destinations for 365 days (for new and port-in only)",
+      ],
+      callsAndSms: [
+        "900 mins local calls",
+        "500 Local SMS",
+        "500 mins from SG to 16 destinations (Local outgoing mins will also be deducted)",
+        "Free Caller ID & local incoming calls",
+      ],
+    },
     afterContractTitle: "After contract period,",
     afterContract: [
       "760GB will change to 750GB",
@@ -207,6 +239,24 @@ export const PLANS_DATA = [
       "500 mins from SG to 16 destinations (Local outgoing mins will also be deducted)",
       "Free Caller ID & local incoming calls",
     ],
+    groupedBenefits: {
+      local: [
+        "Free 5G+ Access",
+        "^Data limit cap at 800GB, speed managed at 512kbps thereafter",
+      ],
+      roaming: [
+        "85GB roaming data for use in mainland China and Hong Kong SAR",
+        "35GB APAC 10 roaming data for use in Australia, China Macau, China Taiwan, Indonesia, Japan, Malaysia, Philippines, South Korea, Thailand and Vietnam",
+        "600GB shared roaming data across Indonesia, Malaysia and Thailand valid for 365 days (for new sign-ups only)",
+        "60GB International Roaming data for use in 210 destinations for 365 days (for new and port-in only)",
+      ],
+      callsAndSms: [
+        "1200 mins local calls",
+        "800 Local SMS",
+        "500 mins from SG to 16 destinations (Local outgoing mins will also be deducted)",
+        "Free Caller ID & local incoming calls",
+      ],
+    },
     afterContractTitle: "After contract period,",
     afterContract: [
       "85GB CN/HK data will change to 80GB",
@@ -259,6 +309,42 @@ export const PLANS_DATA = [
     signUpLabel: "Sign Up Now",
   },
 ];
+
+export const VARIANT_B_PLAN_DATA = {
+  "plan-720gb": {
+    title: "720GB",
+    largePrice: "S$135 / 12 months",
+    subPrice: "S$7.50/month for months 1–6, then S$15.00/month for months 7–12. You save S$45.",
+    changesAfterContract: [
+      "Data: 720GB → 700GB",
+      "APAC 12 roaming: 31GB → 30GB",
+      "Local calls: 650 min → 600 min",
+    ],
+  },
+  "plan-760gb": {
+    title: "760GB",
+    largePrice: "S$252 / 12 months",
+    subPrice: "S$21.0/month",
+    changesAfterContract: [
+      "Data: 760GB → 750GB",
+      "CN/HK data: 65GB → 60GB",
+      "APAC 10 roaming: 33GB → 32GB",
+      "Local calls: 900 min → 800 min",
+      "Local SMS: 500 → 300",
+    ],
+  },
+  "plan-unlimited": {
+    title: "800GB Max",
+    largePrice: "S$373.20 / 12 months",
+    subPrice: "S$31.1/month",
+    changesAfterContract: [
+      "CN/HK data: 85GB → 80GB",
+      "APAC 10 roaming: 35GB → 34GB",
+      "Local calls: 1200 min → 1000 min",
+      "Local SMS: 800 → 500",
+    ],
+  },
+};
 
 export const ADDONS_COPY = {
   heading: "Get Add-Ons",

@@ -1,7 +1,9 @@
 import React from "react";
-import { DEBRIEF_COPY, HEADER_COPY } from "../data.js";
+import { getDebriefCopy, HEADER_COPY } from "../data.js";
 
-export default function DebriefScreen({ variant, onBackToStart }) {
+export default function DebriefScreen({ variant = "A", onBackToStart }) {
+  const debriefCopy = getDebriefCopy(variant);
+
   return (
     <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center p-4 sm:p-6">
       <div className="max-w-lg w-full bg-white rounded-3xl p-8 sm:p-10 shadow-md border border-gray-100 flex flex-col items-center text-center">
@@ -14,7 +16,7 @@ export default function DebriefScreen({ variant, onBackToStart }) {
 
         {/* Debrief message */}
         <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-8">
-          {DEBRIEF_COPY.message}
+          {debriefCopy.message}
         </p>
 
         {/* Back to start button */}
@@ -23,7 +25,7 @@ export default function DebriefScreen({ variant, onBackToStart }) {
           onClick={onBackToStart}
           className="w-full sm:w-auto min-w-[200px] px-8 py-3.5 bg-[#0A93E8] hover:bg-[#0882ce] text-white text-base font-bold rounded-full shadow-md transition active:scale-[0.98] cursor-pointer"
         >
-          {DEBRIEF_COPY.buttonLabel}
+          {debriefCopy.buttonLabel}
         </button>
       </div>
 

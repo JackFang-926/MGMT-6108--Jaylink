@@ -12,11 +12,15 @@ import {
   FOOTER_COPY,
 } from "../data.js";
 
-export default function PlansScreen({ variant, onSignUp }) {
+export default function PlansScreen({ variant = "A", onSignUp }) {
   const [selectedPlanForDetails, setSelectedPlanForDetails] = useState(null);
 
   const handleOpenDetails = (plan) => {
-    setSelectedPlanForDetails(plan);
+    if (variant === "B" && plan.id === "plan-unlimited") {
+      setSelectedPlanForDetails({ ...plan, title: "800GB Max" });
+    } else {
+      setSelectedPlanForDetails(plan);
+    }
   };
 
   const handleCloseDetails = () => {
@@ -78,6 +82,7 @@ export default function PlansScreen({ variant, onSignUp }) {
               <PlanCard
                 key={plan.id}
                 plan={plan}
+                variant={variant}
                 onViewDetails={handleOpenDetails}
                 onSignUp={() => onSignUp(plan)}
               />
