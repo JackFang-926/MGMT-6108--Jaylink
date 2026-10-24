@@ -53,12 +53,12 @@ export default function PlanCard({ plan, onViewDetails, onSignUp }) {
       )}
 
       {/* Benefits List Panel */}
-      <div className="bg-[#F0F7FD] rounded-2xl p-4 sm:p-5 flex-1 mb-4 flex flex-col justify-start">
-        <ul className="space-y-3.5 text-xs text-[#333] leading-snug">
+      <div className="bg-[#F0F7FD] rounded-2xl px-[14px] py-[12px] flex-1 mb-4 flex flex-col justify-start">
+        <ul className="text-[13px] leading-[1.55] text-[#333]">
           {plan.benefits.map((benefit, idx) => (
-            <li key={idx} className="flex items-start space-x-2.5">
+            <li key={idx} className="flex items-start space-x-2.5 mb-[10px] last:mb-0">
               <svg
-                className="w-4 h-4 text-[#78C000] shrink-0 mt-0.5"
+                className="w-[16px] h-[16px] text-[#78C000] shrink-0 mt-[1px]"
                 viewBox="0 0 20 20"
                 fill="none"
               >
@@ -71,7 +71,7 @@ export default function PlanCard({ plan, onViewDetails, onSignUp }) {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className="leading-snug">{benefit}</span>
+              <span>{benefit}</span>
             </li>
           ))}
         </ul>
@@ -79,17 +79,19 @@ export default function PlanCard({ plan, onViewDetails, onSignUp }) {
 
       {/* After Contract Period Note */}
       <div className="px-1 mb-5">
-        <div className="text-[11px] font-normal text-gray-500 mb-1">
+        <div className="text-[11px] font-normal text-[#999] mb-[6px]">
           {plan.afterContractTitle}
         </div>
-        <ul className="text-[11px] text-gray-400 space-y-0.5 list-disc list-inside">
+        <ul className="text-[11px] font-normal text-[#999] leading-[1.5] list-disc list-inside">
           {plan.afterContract.map((item, idx) => (
-            <li key={idx}>{item}</li>
+            <li key={idx} className="mb-[4px] last:mb-0">
+              {item}
+            </li>
           ))}
         </ul>
       </div>
 
-      {/* Bottom Actions (Clean without divider line to match screenshot) */}
+      {/* Bottom Actions */}
       <div className="mt-auto flex items-center justify-between pt-1">
         <button
           type="button"
