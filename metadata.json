@@ -1,0 +1,6 @@
+{
+  "name": "JAYLINK Mobile Plans",
+  "description": "Baseline Variant A of JAYLINK Singapore mobile contract plans prototype for class study.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
