@@ -88,6 +88,16 @@ export default function PlansScreen({ variant = "A", onSignUp }) {
               />
             ))}
           </div>
+
+          {/* CHANGE 1: Early Termination notice - one global banner in Variant B directly underneath cards */}
+          {variant === "B" && (
+            <div className="mt-6 w-full bg-[#FFFBE6] border border-[#F0C040] rounded-[8px] p-[14px_18px] text-[14px] text-[#222] leading-relaxed flex items-start gap-3">
+              <span className="text-[#D97706] text-base shrink-0 leading-tight">⚠</span>
+              <div>
+                If you terminate your subscription before the end of the agreed period, there will be an Early Termination Charge, calculated as follows: Monthly Fee x Remaining months of the minimum subscription period (including the month in which termination occurs).
+              </div>
+            </div>
+          )}
         </section>
 
         {/* GET ADD-ONS SECTION */}

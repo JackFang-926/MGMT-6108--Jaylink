@@ -120,12 +120,12 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
   }
 
   // ----------------------------------------------------
-  // VARIANT B: Findings 1 - 6
+  // VARIANT B: Revisions (Changes 1 - 4)
   // ----------------------------------------------------
   const bData = VARIANT_B_PLAN_DATA[plan.id] || {};
   const cardTitle = bData.title || plan.title;
   const localBenefits = plan.groupedBenefits?.local || [];
-  const roamingBenefits = plan.groupedBenefits?.roaming || [];
+  const roamingItems = bData.roamingItems || [];
   const callsAndSmsBenefits = plan.groupedBenefits?.callsAndSms || [];
   const changesAfterContract = bData.changesAfterContract || [];
 
@@ -160,33 +160,43 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
         </span>
       </div>
 
-      {/* FINDING 1 & 3: Plan Title & Price Layout */}
-      <div className="flex items-start justify-between mb-3 gap-2">
-        <h2 className="text-3xl sm:text-[34px] font-extrabold text-[#222] tracking-tight shrink-0">
+      {/* CHANGE 4: Price Row - Title left, nowrap pink price, unified font sizing */}
+      <div className="flex items-start justify-between mb-2 gap-1.5">
+        <h2 className="text-[27px] lg:text-[25px] xl:text-[27px] font-extrabold text-[#222] tracking-tight shrink-0 leading-tight">
           {cardTitle}
         </h2>
-        <div className="text-right">
-          <div className="text-[#E4087F] font-bold text-2xl sm:text-[28px] leading-tight">
+        <div className="text-right shrink-0">
+          <div className="text-[#E4087F] font-bold text-[23px] lg:text-[21px] xl:text-[23px] leading-tight whitespace-nowrap">
             {bData.largePrice}
-          </div>
-          <div className="text-xs text-[#777] mt-1 leading-normal max-w-[210px] ml-auto">
-            {bData.subPrice}
           </div>
         </div>
       </div>
 
-      {/* Promo Box (preserved if present) */}
-      {plan.promo && (
+      {/* CHANGE 3: Shared min-height on subPrice for identical top area across all cards at lg+ */}
+      <div className="text-right text-xs text-[#777] mb-3 leading-normal lg:min-h-[38px] flex items-start justify-end">
+        <span>{bData.subPrice}</span>
+      </div>
+
+      {/* CHANGE 3: Promo Box with invisible placeholder on cards 2 & 3 for identical LOCAL DATA alignment */}
+      {plan.promo ? (
         <div className="bg-[#E2F59D] rounded-lg p-3 mb-4 text-[#5D8B00] font-semibold text-xs leading-5">
           {plan.promo.map((line, idx) => (
             <div key={idx}>{line}</div>
           ))}
         </div>
+      ) : (
+        <div
+          aria-hidden="true"
+          className="bg-[#E2F59D] rounded-lg p-3 mb-4 text-transparent font-semibold text-xs leading-5 invisible select-none hidden lg:block"
+        >
+          <div>[Placeholder Port-in] 50% off 6 Mths</div>
+          <div>[Placeholder New] 50% off 6 Mths</div>
+        </div>
       )}
 
-      {/* FINDING 4 & 6: Categorized Benefits List Panel */}
+      {/* Benefits List Panel */}
       <div className="bg-[#F0F7FD] rounded-2xl px-[14px] py-[12px] flex-1 mb-4 flex flex-col justify-start">
-        {/* Section 1: LOCAL DATA */}
+        {/* Section 1: LOCAL DATA - sits at exact same vertical position across all 3 cards */}
         <div className="mb-4">
           <div className="text-[11px] font-bold uppercase tracking-wider text-[#888] mb-1.5">
             LOCAL DATA
@@ -214,7 +224,7 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
           </ul>
         </div>
 
-        {/* Section 2: ROAMING (FINDING 6 Collapsible Drawer) */}
+        {/* Section 2: ROAMING (CHANGE 2 Restructured drawer) */}
         <div className="mb-4">
           <div className="text-[11px] font-bold uppercase tracking-wider text-[#888] mb-1.5">
             ROAMING
@@ -225,38 +235,24 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
               onClick={() => setIsRoamingOpen((prev) => !prev)}
               className="w-full flex items-center justify-between text-left text-[13px] font-medium text-[#0A93E8] hover:text-[#0882ce] transition cursor-pointer py-1 select-none"
             >
-              <span>Multi-Destination Roaming — tap to see coverage &amp; priority</span>
+              <span>Multi-Destination Roaming — tap to see coverage</span>
               <span className="text-xs text-[#0A93E8] shrink-0 ml-1.5 font-bold">
                 {isRoamingOpen ? "▼" : "▶"}
               </span>
             </button>
 
             {isRoamingOpen && (
-              <div className="mt-2.5 pt-2 border-t border-[#E1EFF9]">
-                <ul className="text-[13px] leading-[1.55] text-[#333]">
-                  {roamingBenefits.map((item, idx) => (
-                    <li key={idx} className="flex items-start space-x-2.5 mb-[10px] last:mb-0">
-                      <svg
-                        className="w-[16px] h-[16px] text-[#78C000] shrink-0 mt-[1px]"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                      >
-                        <circle cx="10" cy="10" r="8.5" stroke="#78C000" strokeWidth="1.8" />
-                        <path
-                          d="M6.5 10.2L8.8 12.5L13.8 7.5"
-                          stroke="#78C000"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="text-[11px] text-[#888] mt-2 pt-1 border-t border-dashed border-[#D2E7F7]">
-                  Deduction order: CN/HK → APAC → MY/TH/ID shared → Global 210
-                </div>
+              <div className="mt-2.5 pt-2 border-t border-[#E1EFF9] space-y-[12px]">
+                {roamingItems.map((item, idx) => (
+                  <div key={idx} className="text-left">
+                    <p className="font-bold text-[#222] text-[14px] leading-snug mb-0.5">
+                      {item.p1}
+                    </p>
+                    <p className="font-normal text-[#666] text-[13px] leading-relaxed">
+                      {item.p2}
+                    </p>
+                  </div>
+                ))}
               </div>
             )}
           </div>
@@ -290,7 +286,7 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
           </ul>
         </div>
 
-        {/* FINDING 2: Changes after contract period (replaces small grey bullets) */}
+        {/* Changes after contract period */}
         <div className="mt-4 pt-3.5 border-t border-[#D5E6F5]">
           <div className="text-[13px] font-bold text-[#222] mb-2">
             Changes after contract period
@@ -305,22 +301,7 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
         </div>
       </div>
 
-      {/* FINDING 5: Early Termination Charge warning box */}
-      <div className="bg-[#FFFBE6] border border-[#F0C040] rounded-[6px] p-[10px] mb-4 text-[12px] sm:text-[13px] text-[#222] leading-relaxed">
-        <div className="flex items-start gap-1.5">
-          <span className="text-[#D97706] text-sm shrink-0">⚠</span>
-          <div>
-            <div className="font-semibold">
-              Early Termination Charge applies if you cancel before month 12:
-            </div>
-            <div className="font-normal text-[#444] mt-0.5">
-              Monthly Fee × Remaining months (including the termination month).
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Actions */}
+      {/* Bottom Actions (unchanged) */}
       <div className="mt-auto flex items-center justify-between pt-1">
         <button
           type="button"

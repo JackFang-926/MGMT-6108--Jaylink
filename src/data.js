@@ -313,17 +313,35 @@ export const PLANS_DATA = [
 export const VARIANT_B_PLAN_DATA = {
   "plan-720gb": {
     title: "720GB",
-    largePrice: "S$135 / 12 months",
+    largePrice: "$135 / year",
     subPrice: "S$7.50/month for months 1–6, then S$15.00/month for months 7–12. You save S$45.",
     changesAfterContract: [
       "Data: 720GB → 700GB",
       "APAC 12 roaming: 31GB → 30GB",
       "Local calls: 650 min → 600 min",
     ],
+    roamingItems: [
+      {
+        p1: "5GB roaming data (per month)",
+        p2: "Applicable Coverage: Mainland China and Hong Kong SAR",
+      },
+      {
+        p1: "31GB APAC 12 roaming data (per month)",
+        p2: "Applicable Coverage: Australia, China (including Hong Kong, Macau and Taiwan), Indonesia, Japan, Malaysia, Philippines, South Korea, Thailand and Vietnam",
+      },
+      {
+        p1: "1TB shared roaming data (one pool, valid for 365 days, for new sign-ups only)",
+        p2: "Applicable Coverage: Indonesia, Malaysia and Thailand",
+      },
+      {
+        p1: "60GB international roaming data (valid for 365 days, for new and port-in only)",
+        p2: "Applicable Coverage: 210 destinations",
+      },
+    ],
   },
   "plan-760gb": {
     title: "760GB",
-    largePrice: "S$252 / 12 months",
+    largePrice: "$252 / year",
     subPrice: "S$21.0/month",
     changesAfterContract: [
       "Data: 760GB → 750GB",
@@ -332,16 +350,52 @@ export const VARIANT_B_PLAN_DATA = {
       "Local calls: 900 min → 800 min",
       "Local SMS: 500 → 300",
     ],
+    roamingItems: [
+      {
+        p1: "65GB roaming data (per month)",
+        p2: "Applicable Coverage: Mainland China and Hong Kong SAR",
+      },
+      {
+        p1: "33GB APAC 10 roaming data (per month)",
+        p2: "Applicable Coverage: Australia, China Macau, China Taiwan, Indonesia, Japan, Malaysia, Philippines, South Korea, Thailand and Vietnam",
+      },
+      {
+        p1: "600GB shared roaming data (one pool, valid for 365 days, for new sign-ups only)",
+        p2: "Applicable Coverage: Indonesia, Malaysia and Thailand",
+      },
+      {
+        p1: "60GB international roaming data (valid for 365 days, for new and port-in only)",
+        p2: "Applicable Coverage: 210 destinations",
+      },
+    ],
   },
   "plan-unlimited": {
     title: "800GB Max",
-    largePrice: "S$373.20 / 12 months",
+    largePrice: "$373.20 / year",
     subPrice: "S$31.1/month",
     changesAfterContract: [
       "CN/HK data: 85GB → 80GB",
       "APAC 10 roaming: 35GB → 34GB",
       "Local calls: 1200 min → 1000 min",
       "Local SMS: 800 → 500",
+    ],
+    roamingItems: [
+      {
+        p1: "85GB roaming data (per month)",
+        p2: "Applicable Coverage: Mainland China and Hong Kong SAR",
+      },
+      {
+        p1: "35GB APAC 10 roaming data (per month)",
+        p2: "Applicable Coverage: Australia, China Macau, China Taiwan, Indonesia, Japan, Malaysia, Philippines, South Korea, Thailand and Vietnam",
+      },
+      {
+        p1: "600GB shared roaming data (one pool, valid for 365 days, for new sign-ups only)",
+        p2: "Applicable Coverage: Indonesia, Malaysia and Thailand",
+      },
+      {
+        p1: "60GB international roaming data (valid for 365 days, for new and port-in only)",
+        p2: "Applicable Coverage: 210 destinations",
+      },
     ],
   },
 };

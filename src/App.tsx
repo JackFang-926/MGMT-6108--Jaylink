@@ -20,7 +20,7 @@ function getInitialVariant(): "A" | "B" {
       urlVariant = new URLSearchParams(hashQuery).get("v")?.toUpperCase();
     }
 
-    // 2. If urlVariant is "A" or "B", use it directly and also write it to sessionStorage under key "jaylink_variant"
+    // 2. If urlVariant is "A" or "B", use it directly and write it to sessionStorage under key "jaylink_variant"
     if (urlVariant === "A" || urlVariant === "B") {
       try {
         sessionStorage.setItem("jaylink_variant", urlVariant);
@@ -40,16 +40,16 @@ function getInitialVariant(): "A" | "B" {
       // ignore
     }
 
-    // 4. If sessionStorage is also empty, randomly assign "A" or "B", write it to sessionStorage, and use it
-    const assigned: "A" | "B" = Math.random() < 0.5 ? "A" : "B";
+    // 4. Default to "B" for initial view when no variant is explicitly chosen
+    const defaultVariant: "A" | "B" = "B";
     try {
-      sessionStorage.setItem("jaylink_variant", assigned);
+      sessionStorage.setItem("jaylink_variant", defaultVariant);
     } catch {
       // ignore
     }
-    return assigned;
+    return defaultVariant;
   }
-  return "A";
+  return "B";
 }
 
 export default function App() {
