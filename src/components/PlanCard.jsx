@@ -178,7 +178,7 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
       </div>
 
       {/* FINDING 7 & FINDING 10: Green Information Box with Target-User Context */}
-      {/* Parent container has fixed min-height to keep 'LOCAL DATA' and all subsequent elements aligned horizontally across all 3 cards */}
+      {/* Parent wrapper has fixed min-height to ensure 'LOCAL DATA' headers and all elements below remain perfectly aligned horizontally across all three cards */}
       <div className="mb-4 lg:min-h-[168px] flex flex-col justify-start">
         <div className="bg-[#E2F59D] rounded-lg p-3 text-[#5D8B00] text-xs leading-5">
           {promo && (
@@ -278,14 +278,14 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
             ROAMING
           </div>
           <div>
-            {/* Interactive link blue to clearly indicate clickability */}
+            {/* Permanent interactive blue by default at all times - no hover invented, no black/gray text */}
             <button
               type="button"
               onClick={() => setIsRoamingOpen((prev) => !prev)}
-              className="w-full flex items-center justify-between text-left text-[13px] font-semibold text-[#0284c7] hover:text-[#0369a1] transition cursor-pointer py-1 select-none"
+              className="w-full flex items-center justify-between text-left text-[13px] font-semibold text-blue-600 cursor-pointer py-1 select-none"
             >
-              <span>Multi-Destination Roaming — tap to see coverage</span>
-              <span className="text-xs text-[#0284c7] shrink-0 ml-1.5 font-bold">
+              <span className="text-blue-600">Multi-Destination Roaming — tap to see coverage</span>
+              <span className="text-xs text-blue-600 shrink-0 ml-1.5 font-bold">
                 {isRoamingOpen ? "▼" : "▶"}
               </span>
             </button>
