@@ -120,14 +120,14 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
   }
 
   // ----------------------------------------------------
-  // VARIANT B: Revisions (Changes 1 - 4)
+  // VARIANT B: Revisions (Findings 1 - 10)
   // ----------------------------------------------------
   const bData = VARIANT_B_PLAN_DATA[plan.id] || {};
   const cardTitle = bData.title || plan.title;
-  const localBenefits = plan.groupedBenefits?.local || [];
   const roamingItems = bData.roamingItems || [];
-  const callsAndSmsBenefits = plan.groupedBenefits?.callsAndSms || [];
   const changesAfterContract = bData.changesAfterContract || [];
+  const targetUser = bData.targetUser;
+  const promo = bData.promo;
 
   return (
     <div className="relative bg-gradient-to-b from-[#F2F8FD] to-[#E9F3FB] border border-[#D5E6F5] rounded-3xl p-6 sm:p-7 flex flex-col shadow-xs h-full">
@@ -160,7 +160,7 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
         </span>
       </div>
 
-      {/* CHANGE 4: Price Row - Title left, nowrap pink price, unified font sizing */}
+      {/* Price Row: Title left, nowrap pink price, unified font sizing */}
       <div className="flex items-start justify-between mb-2 gap-1.5">
         <h2 className="text-[27px] lg:text-[25px] xl:text-[27px] font-extrabold text-[#222] tracking-tight shrink-0 leading-tight">
           {cardTitle}
@@ -172,40 +172,87 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
         </div>
       </div>
 
-      {/* CHANGE 3: Shared min-height on subPrice for identical top area across all cards at lg+ */}
+      {/* Shared min-height on subPrice for identical top alignment across all cards */}
       <div className="text-right text-xs text-[#777] mb-3 leading-normal lg:min-h-[38px] flex items-start justify-end">
         <span>{bData.subPrice}</span>
       </div>
 
-      {/* CHANGE 3: Promo Box with invisible placeholder on cards 2 & 3 for identical LOCAL DATA alignment */}
-      {plan.promo ? (
-        <div className="bg-[#E2F59D] rounded-lg p-3 mb-4 text-[#5D8B00] font-semibold text-xs leading-5">
-          {plan.promo.map((line, idx) => (
-            <div key={idx}>{line}</div>
-          ))}
+      {/* FINDING 7 & FINDING 10: Green Information Box with Target-User Context */}
+      <div className="mb-4 lg:min-h-[178px] flex flex-col justify-start">
+        <div className="bg-[#E2F59D] rounded-lg p-3 text-[#5D8B00] text-xs leading-5 flex flex-col justify-between flex-1">
+          {promo ? (
+            <div>
+              {/* Finding 7: Clear promo wording */}
+              <div className="font-bold space-y-0.5">
+                {promo.items.map((line, idx) => (
+                  <div key={idx}>{line}</div>
+                ))}
+              </div>
+              {/* Short explanation */}
+              {promo.explanation && (
+                <div className="text-[11px] leading-tight text-[#4d7300] mt-1.5 opacity-90">
+                  {promo.explanation}
+                </div>
+              )}
+            </div>
+          ) : (
+            /* Spacer on cards without promotions to balance visual weight */
+            <div className="hidden lg:block h-3"></div>
+          )}
+
+          {/* Finding 10: Target user context directly below promotions (or standalone for cards 2 & 3) */}
+          {targetUser && (
+            <div className={promo ? "mt-2.5 pt-2 border-t border-[#cde578]" : "my-auto py-1"}>
+              <div className="text-[13px] font-extrabold text-[#486e00] leading-tight">
+                {targetUser.label}
+              </div>
+              <div className="text-[11.5px] font-medium text-[#557e02] leading-snug mt-0.5">
+                {targetUser.description}
+              </div>
+            </div>
+          )}
         </div>
-      ) : (
-        <div
-          aria-hidden="true"
-          className="bg-[#E2F59D] rounded-lg p-3 mb-4 text-transparent font-semibold text-xs leading-5 invisible select-none hidden lg:block"
-        >
-          <div>[Placeholder Port-in] 50% off 6 Mths</div>
-          <div>[Placeholder New] 50% off 6 Mths</div>
-        </div>
-      )}
+      </div>
 
       {/* Benefits List Panel */}
       <div className="bg-[#F0F7FD] rounded-2xl px-[14px] py-[12px] flex-1 mb-4 flex flex-col justify-start">
         {/* Section 1: LOCAL DATA - sits at exact same vertical position across all 3 cards */}
         <div className="mb-4">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-[#888] mb-1.5">
+          {/* Finding 9: Bold black/dark category heading */}
+          <div className="text-[11px] font-extrabold uppercase tracking-wider text-[#222] mb-1.5">
             LOCAL DATA
           </div>
-          <ul className="text-[13px] leading-[1.55] text-[#333]">
-            {localBenefits.map((benefit, idx) => (
-              <li key={idx} className="flex items-start space-x-2.5 mb-[10px] last:mb-0">
+          <ul className="text-[13px] leading-[1.55]">
+            {/* Finding 8: 5G+ benefit with SA handset & coverage qualification visible */}
+            {/* Finding 9: Shared baseline feature -> light grey checkmark & grey text */}
+            <li className="flex items-start space-x-2.5 mb-[10px] text-[#666]">
+              <svg
+                className="w-[16px] h-[16px] text-[#A0AEC0] shrink-0 mt-[2px]"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <circle cx="10" cy="10" r="8.5" stroke="#CBD5E0" strokeWidth="1.8" />
+                <path
+                  d="M6.5 10.2L8.8 12.5L13.8 7.5"
+                  stroke="#A0AEC0"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <div>
+                <span className="font-semibold text-[#555]">Free 5G+ Access</span>
+                <span className="block text-[11px] text-[#777] font-normal leading-tight mt-0.5">
+                  (Requires 5G SA Handset &amp; Covered Areas)
+                </span>
+              </div>
+            </li>
+
+            {/* Unlimited Plan Data Cap Policy item */}
+            {plan.id === "plan-unlimited" && (
+              <li className="flex items-start space-x-2.5 mb-[10px] text-[#333]">
                 <svg
-                  className="w-[16px] h-[16px] text-[#78C000] shrink-0 mt-[1px]"
+                  className="w-[16px] h-[16px] text-[#78C000] shrink-0 mt-[2px]"
                   viewBox="0 0 20 20"
                   fill="none"
                 >
@@ -218,25 +265,29 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span>{benefit}</span>
+                <span className="text-[#333]">
+                  ^Data limit cap at 800GB, speed managed at 512kbps thereafter
+                </span>
               </li>
-            ))}
+            )}
           </ul>
         </div>
 
-        {/* Section 2: ROAMING (CHANGE 2 Restructured drawer) */}
+        {/* Section 2: ROAMING */}
         <div className="mb-4">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-[#888] mb-1.5">
+          {/* Finding 9: Bold black/dark category heading */}
+          <div className="text-[11px] font-extrabold uppercase tracking-wider text-[#222] mb-1.5">
             ROAMING
           </div>
           <div>
+            {/* Finding 9: Roaming summary text changed to harmonious dark grey/black text */}
             <button
               type="button"
               onClick={() => setIsRoamingOpen((prev) => !prev)}
-              className="w-full flex items-center justify-between text-left text-[13px] font-medium text-[#0A93E8] hover:text-[#0882ce] transition cursor-pointer py-1 select-none"
+              className="w-full flex items-center justify-between text-left text-[13px] font-semibold text-[#222] hover:text-[#0A93E8] transition cursor-pointer py-1 select-none"
             >
               <span>Multi-Destination Roaming — tap to see coverage</span>
-              <span className="text-xs text-[#0A93E8] shrink-0 ml-1.5 font-bold">
+              <span className="text-xs text-[#555] shrink-0 ml-1.5 font-bold">
                 {isRoamingOpen ? "▼" : "▶"}
               </span>
             </button>
@@ -260,29 +311,96 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
 
         {/* Section 3: CALLS & SMS */}
         <div>
-          <div className="text-[11px] font-bold uppercase tracking-wider text-[#888] mb-1.5">
+          {/* Finding 9: Bold black/dark category heading */}
+          <div className="text-[11px] font-extrabold uppercase tracking-wider text-[#222] mb-1.5">
             CALLS &amp; SMS
           </div>
-          <ul className="text-[13px] leading-[1.55] text-[#333]">
-            {callsAndSmsBenefits.map((item, idx) => (
-              <li key={idx} className="flex items-start space-x-2.5 mb-[10px] last:mb-0">
-                <svg
-                  className="w-[16px] h-[16px] text-[#78C000] shrink-0 mt-[1px]"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                >
-                  <circle cx="10" cy="10" r="8.5" stroke="#78C000" strokeWidth="1.8" />
-                  <path
-                    d="M6.5 10.2L8.8 12.5L13.8 7.5"
-                    stroke="#78C000"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <span>{item}</span>
-              </li>
-            ))}
+          <ul className="text-[13px] leading-[1.55]">
+            {/* Upgraded call minutes: Tiered across plans -> Green checkmark */}
+            <li className="flex items-start space-x-2.5 mb-[10px] text-[#333]">
+              <svg
+                className="w-[16px] h-[16px] text-[#78C000] shrink-0 mt-[2px]"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <circle cx="10" cy="10" r="8.5" stroke="#78C000" strokeWidth="1.8" />
+                <path
+                  d="M6.5 10.2L8.8 12.5L13.8 7.5"
+                  stroke="#78C000"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span>
+                {plan.id === "plan-720gb" && "650 mins local calls"}
+                {plan.id === "plan-760gb" && "900 mins local calls"}
+                {plan.id === "plan-unlimited" && "1200 mins local calls"}
+              </span>
+            </li>
+
+            {/* Upgraded local SMS: Tiered across plans -> Green checkmark */}
+            <li className="flex items-start space-x-2.5 mb-[10px] text-[#333]">
+              <svg
+                className="w-[16px] h-[16px] text-[#78C000] shrink-0 mt-[2px]"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <circle cx="10" cy="10" r="8.5" stroke="#78C000" strokeWidth="1.8" />
+                <path
+                  d="M6.5 10.2L8.8 12.5L13.8 7.5"
+                  stroke="#78C000"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span>
+                {plan.id === "plan-720gb" && "100 local SMS"}
+                {plan.id === "plan-760gb" && "500 Local SMS"}
+                {plan.id === "plan-unlimited" && "800 Local SMS"}
+              </span>
+            </li>
+
+            {/* Shared Baseline: 500 mins SG to 16 dest (identical on all 3) -> Grey checkmark */}
+            <li className="flex items-start space-x-2.5 mb-[10px] text-[#666]">
+              <svg
+                className="w-[16px] h-[16px] text-[#A0AEC0] shrink-0 mt-[2px]"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <circle cx="10" cy="10" r="8.5" stroke="#CBD5E0" strokeWidth="1.8" />
+                <path
+                  d="M6.5 10.2L8.8 12.5L13.8 7.5"
+                  stroke="#A0AEC0"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span>
+                500 mins from SG to 16 destinations (Local outgoing mins will also be deducted)
+              </span>
+            </li>
+
+            {/* Shared Baseline: Free Caller ID & local incoming calls (identical on all 3) -> Grey checkmark */}
+            <li className="flex items-start space-x-2.5 mb-[10px] text-[#666]">
+              <svg
+                className="w-[16px] h-[16px] text-[#A0AEC0] shrink-0 mt-[2px]"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <circle cx="10" cy="10" r="8.5" stroke="#CBD5E0" strokeWidth="1.8" />
+                <path
+                  d="M6.5 10.2L8.8 12.5L13.8 7.5"
+                  stroke="#A0AEC0"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span>Free Caller ID &amp; local incoming calls</span>
+            </li>
           </ul>
         </div>
 

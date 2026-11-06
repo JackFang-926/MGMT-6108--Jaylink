@@ -315,6 +315,19 @@ export const VARIANT_B_PLAN_DATA = {
     title: "720GB",
     largePrice: "$135 / year",
     subPrice: "S$7.50/month for months 1–6, then S$15.00/month for months 7–12. You save S$45.",
+    // Finding 7: Clear promo wording & explanation
+    promo: {
+      items: [
+        "New Sign-ups: 50% Off for 6 Months",
+        "Switch from Non-Poretel Providers: 50% Off for 6 Months",
+      ],
+      explanation: "Transfer your existing mobile number from a provider other than Poretel to qualify, subject to the promotion terms.",
+    },
+    // Finding 10: Target user context
+    targetUser: {
+      label: "Local Essential",
+      description: "Perfect for daily Singapore usage.",
+    },
     changesAfterContract: [
       "Data: 720GB → 700GB",
       "APAC 12 roaming: 31GB → 30GB",
@@ -343,6 +356,12 @@ export const VARIANT_B_PLAN_DATA = {
     title: "760GB",
     largePrice: "$252 / year",
     subPrice: "S$21.0/month",
+    promo: null,
+    // Finding 10: Target user context
+    targetUser: {
+      label: "Cross-Border Professional",
+      description: "Best value for frequent Singapore–China commuters.",
+    },
     changesAfterContract: [
       "Data: 760GB → 750GB",
       "CN/HK data: 65GB → 60GB",
@@ -373,6 +392,12 @@ export const VARIANT_B_PLAN_DATA = {
     title: "800GB Max",
     largePrice: "$373.20 / year",
     subPrice: "S$31.1/month",
+    promo: null,
+    // Finding 10: Target user context
+    targetUser: {
+      label: "Regional Wanderer",
+      description: "Maximum freedom for heavy APAC travellers.",
+    },
     changesAfterContract: [
       "CN/HK data: 85GB → 80GB",
       "APAC 10 roaming: 35GB → 34GB",
