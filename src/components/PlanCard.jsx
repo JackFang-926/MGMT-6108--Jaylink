@@ -178,8 +178,8 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
       </div>
 
       {/* FINDING 7 & FINDING 10: Green Information Box with Target-User Context */}
-      {/* Parent wrapper has fixed min-height to ensure 'LOCAL DATA' headers and all elements below remain perfectly aligned horizontally across all three cards */}
-      <div className="mb-4 lg:min-h-[148px] flex flex-col justify-start">
+      {/* Fixed height on desktop ensures the left card's box never pushes down and 'LOCAL DATA' sits at the exact same horizontal baseline across all three cards */}
+      <div className="mb-4 lg:h-[180px] flex flex-col justify-start">
         <div className="bg-[#E2F59D] rounded-lg p-3 text-[#5D8B00] text-xs leading-5">
           {promo && (
             <div className="space-y-1">
@@ -219,7 +219,8 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
           <div className="text-[11px] font-extrabold uppercase tracking-wider text-[#222] mb-1.5">
             LOCAL DATA
           </div>
-          <ul className="text-[13px] leading-[1.55]">
+          {/* lg:min-h matches the tallest content (Card 3 with cap policy) so 'ROAMING' header aligns horizontally */}
+          <ul className="text-[13px] leading-[1.55] lg:min-h-[96px] flex flex-col justify-start">
             {/* Finding 8: 5G+ benefit with SA handset & coverage qualification visible */}
             {/* Finding 9: Shared baseline feature -> light grey checkmark & grey text */}
             <li className="flex items-start space-x-2.5 mb-[10px] text-[#666]">
@@ -272,7 +273,7 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
 
         {/* Section 2: ROAMING */}
         <div className="mb-4">
-          {/* Finding 9: Bold black/dark category heading */}
+          {/* Finding 9: Bold black/dark category heading - CRITICAL ALIGNMENT 1 */}
           <div className="text-[11px] font-extrabold uppercase tracking-wider text-[#222] mb-1.5">
             ROAMING
           </div>
@@ -308,11 +309,12 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
 
         {/* Section 3: CALLS & SMS */}
         <div>
-          {/* Finding 9: Bold black/dark category heading */}
+          {/* Finding 9: Bold black/dark category heading - CRITICAL ALIGNMENT 2 */}
           <div className="text-[11px] font-extrabold uppercase tracking-wider text-[#222] mb-1.5">
             CALLS &amp; SMS
           </div>
-          <ul className="text-[13px] leading-[1.55]">
+          {/* lg:min-h matches the 4 items so 'Changes after contract period' aligns horizontally */}
+          <ul className="text-[13px] leading-[1.55] lg:min-h-[178px] flex flex-col justify-start">
             {/* Upgraded call minutes: Tiered across plans -> Green checkmark */}
             <li className="flex items-start space-x-2.5 mb-[10px] text-[#333]">
               <svg
@@ -401,7 +403,7 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
           </ul>
         </div>
 
-        {/* Changes after contract period */}
+        {/* Changes after contract period - CRITICAL ALIGNMENT 3 */}
         <div className="mt-4 pt-3.5 border-t border-[#D5E6F5]">
           <div className="text-[13px] font-bold text-[#222] mb-2">
             Changes after contract period
