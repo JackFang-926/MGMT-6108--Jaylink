@@ -179,22 +179,21 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
 
       {/* FINDING 7 & FINDING 10: Green Information Box with Target-User Context */}
       {/* Parent wrapper has fixed min-height to ensure 'LOCAL DATA' headers and all elements below remain perfectly aligned horizontally across all three cards */}
-      <div className="mb-4 lg:min-h-[168px] flex flex-col justify-start">
+      <div className="mb-4 lg:min-h-[148px] flex flex-col justify-start">
         <div className="bg-[#E2F59D] rounded-lg p-3 text-[#5D8B00] text-xs leading-5">
           {promo && (
-            <div>
-              {/* Finding 7: Clear promo wording */}
-              <div className="font-bold space-y-0.5">
-                {promo.items.map((line, idx) => (
-                  <div key={idx}>{line}</div>
-                ))}
+            <div className="space-y-1">
+              {/* Promo item 1: New Sign-ups */}
+              <div className="font-bold">
+                {promo.items[0]}
               </div>
-              {/* Short explanation */}
-              {promo.explanation && (
-                <div className="text-[11px] leading-tight text-[#4d7300] mt-1.5 opacity-90">
+              {/* Promo item 2: Switch promo bold heading merged with non-bold explanation */}
+              <div className="leading-snug">
+                <span className="font-bold">{promo.items[1]}: </span>
+                <span className="font-normal text-[11.5px] text-[#4d7300]">
                   {promo.explanation}
-                </div>
-              )}
+                </span>
+              </div>
             </div>
           )}
 
