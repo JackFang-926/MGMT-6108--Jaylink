@@ -178,9 +178,10 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
       </div>
 
       {/* FINDING 7 & FINDING 10: Green Information Box with Target-User Context */}
-      <div className="mb-4 lg:min-h-[178px] flex flex-col justify-start">
-        <div className="bg-[#E2F59D] rounded-lg p-3 text-[#5D8B00] text-xs leading-5 flex flex-col justify-between flex-1">
-          {promo ? (
+      {/* Parent container has fixed min-height to keep 'LOCAL DATA' and all subsequent elements aligned horizontally across all 3 cards */}
+      <div className="mb-4 lg:min-h-[168px] flex flex-col justify-start">
+        <div className="bg-[#E2F59D] rounded-lg p-3 text-[#5D8B00] text-xs leading-5">
+          {promo && (
             <div>
               {/* Finding 7: Clear promo wording */}
               <div className="font-bold space-y-0.5">
@@ -195,14 +196,11 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
                 </div>
               )}
             </div>
-          ) : (
-            /* Spacer on cards without promotions to balance visual weight */
-            <div className="hidden lg:block h-3"></div>
           )}
 
           {/* Finding 10: Target user context directly below promotions (or standalone for cards 2 & 3) */}
           {targetUser && (
-            <div className={promo ? "mt-2.5 pt-2 border-t border-[#cde578]" : "my-auto py-1"}>
+            <div className={promo ? "mt-2.5 pt-2 border-t border-[#cde578]" : ""}>
               <div className="text-[13px] font-extrabold text-[#486e00] leading-tight">
                 {targetUser.label}
               </div>
@@ -280,14 +278,14 @@ export default function PlanCard({ plan, variant = "A", onViewDetails, onSignUp 
             ROAMING
           </div>
           <div>
-            {/* Finding 9: Roaming summary text changed to harmonious dark grey/black text */}
+            {/* Interactive link blue to clearly indicate clickability */}
             <button
               type="button"
               onClick={() => setIsRoamingOpen((prev) => !prev)}
-              className="w-full flex items-center justify-between text-left text-[13px] font-semibold text-[#222] hover:text-[#0A93E8] transition cursor-pointer py-1 select-none"
+              className="w-full flex items-center justify-between text-left text-[13px] font-semibold text-[#0284c7] hover:text-[#0369a1] transition cursor-pointer py-1 select-none"
             >
               <span>Multi-Destination Roaming — tap to see coverage</span>
-              <span className="text-xs text-[#555] shrink-0 ml-1.5 font-bold">
+              <span className="text-xs text-[#0284c7] shrink-0 ml-1.5 font-bold">
                 {isRoamingOpen ? "▼" : "▶"}
               </span>
             </button>
