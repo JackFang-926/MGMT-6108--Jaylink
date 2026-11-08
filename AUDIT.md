@@ -118,71 +118,112 @@ The decision: \[which 12-month contract plan to sign \]
 
 ## Added after building
 Notice:  Screenshots Taken: the afternoon of 6 November 2026, Laptop, Web:https://www.cmlink.com/sg/zh/plans/?type=2 
+
 Live Site Refresh Noted: On 6 November 2026 at 19:38 SGT, After we took the final screenshot 7-10, we revisited the official CMLink Singapore website and observed that the operator rolled out an updated plan revision. The live update increased certain contract plan entitlements (higher local data allowances and upgraded overseas roaming allocations). However, the page's core information architecture, visual layout, card structure, and UI styling remained virtually unchanged. 
+
 Confirmation: To preserve experimental validity and pre-registration integrity, the entire behavioral audit, all documented findings, all visual screenshots, the Variant A baseline prototype, and the Variant B redesign are strictly based on the pre-update version captured before 19:38 SGT on 6 November 2026. (The webpage does not disclose the version number, so we have no information about the specific details of the version.)
 
 
 
 
 Finding 7 Promotion shorthand makes eligibility hard to understand
+
 Where: The $15 card’s promotion labels, including “[Non ST Port-in] 50% off 6 Mths” and “[New] 50% off 6 Mths”. (Screenshot 7)
+
 What the user sees and does: The discount is easy to notice, but the label requires the user to decode difficult-to-understand abbreviations: “ST”, “Port-in”. Someone changing providers may not know whether their current provider qualifies. Reading the discount is therefore easier than checking eligibility.
+
 Principle: Processing fluency (Petrova, Schwarz, & Song, 2012, pp. 66-67)
+
 Mechanism, whose goal wins: Users can understand that they can save half the price. However, when faced with a rare abbreviation like "Non ST Port-in", their minds find it too difficult to decode. According to the processing disfluency principle: if something is difficult to read, one is reluctant to think about it, users will simply skip the qualification review and subconsciously believe that they can also enjoy this discount.
 Individual verdicts: Fang [Sludge] · Zhao [Sludge] · Tian [Sludge] · Xiao [Grey] · Agreed [Sludge]
+
 Severity 0–4: Fang Ziqi [1] · Zhao Ronghui [2] · Tian Jingwen [2] · Xiao Qingyuan [2] · agreed [2] · Driver: Frequency: every reader of the promotion; cost: a mistaken discount expectation; learn around it: experienced port-in customers may understand it.
+
 Repair: Replace cryptic acronyms with explicit, standardized plain text on the card: "New numbers & Switch from non-Poretel telcos". (Since the actual name of the company cannot be disclosed for this project, we have replaced Singtel with the fictional name Poretel) 
+
 Prediction: Present a real scenario to the participants: "You are currently using StarHub's mobile plan and are considering transferring your current number to the CMLink plan which costs 15 Singapore dollars per month. Do you meet the conditions for a 50% discount? How much will you have to pay for the first 6 months?" Without any external assistance, the accuracy increased from 45% in Version A to at least 75% in Version B. If the improvement in accuracy is less than 20 percentage points, or if the additional burden caused by the prompt tool and text checks leads to the median task completion time for Scheme B being more than 10 seconds longer than that of Scheme A, then we will abandon this improvement plan.
 
 Finding 8 The 5G access promise needs readable device and coverage conditions
+
 Where: The “Free 5G+ Access” line and its device and coverage conditions in View Details. (Screenshot 8)
+
 What the user sees and does: The short headline is easy to read. The detailed text in the prototype states that a 5G SA-compatible handset and relevant network coverage are needed. A shopper may read “access” as a promise that their own phone will receive 5G everywhere.
+
 Principle: W3 Prior expectation setting (Ariely, 2008, ch. 9, pp. 158-164), W7 Perceptual disfluency (Petrova, Schwarz, & Song, 2012, pp. 66-67).
+
 Mechanism, whose goal wins: The prominent "Free 5G+ Access" on the card sets a preconceived expectation for users, suggesting that "once purchased, you can use the ultra-fast 5G service anytime and anywhere". However, the actual restrictions (requiring specific phone models and specific network coverage) are hidden in the text box of “View Detail”. The user must click "View Details" to view. After being anchored by the positive expectations mentioned earlier, users simply do not bother to click on the small print to verify, resulting in a misjudgment of the compatibility of their own phones.
+
 Individual verdicts: Fang [Sludge] · Zhao [Grey] · Tian [Grey] · Xiao [Grey] · Agreed [Grey]
+
 Severity 0–4: Fang Ziqi [2] · Zhao Ronghui [1] · Tian Jingwen [1] · Xiao Qingyuan [1] · agreed [1] · Driver: Cost and trust: paying for a plan whose headline feature the user cannot use; frequency depends on device and location. 
 Repair: Append an explicit qualifier immediately adjacent to the headline claim: "Free 5G+ Access (Requires 5G SA handset & covered areas)".
+
 Prediction: Present a realistic scenario to the participants: "You own an iPhone 11 (which only supports 4G) and have registered for this package, expecting to use a 5G network nearby. After inserting the SIM card, will you immediately obtain a 5G connection? What are the two prerequisite conditions needed?" Without external assistance, accuracy rises from 40% in Version A to at least 75% in Version B. If the accuracy rate does not increase by more than 25 percentage points, or if prematurely warning unintentionally leads to a decrease of more than 15% in the registration intention of eligible 4G users due to mistakenly regarding 5G availability as a prerequisite for basic cellular service, then cancel this fix measure. 
 
 
 Finding 9: The monotonous green check mark leads to a flattened visual hierarchy.
 
 Where: The area displaying the list of benefits in the three package cards. (Screenshot 9)
+
 What the user sees and does: For all the service items (whether it's the core international roaming data or the basic call display), the green checkmark icon is used identically for each one. The visual effect is extremely monotonous. Users can't easily distinguish the key points at a glance and it's difficult to compare where the high-priced packages are actually more expensive.
+
 Principle: W9 Colour psychology and referential meaning of hue and value (Labrecque & Milne, 2012, pp. 713-717). 
+
 Mechanism, whose goal wins: The saturation and value of colors significantly affect the allocation of users' attention and their perception of information. Using all the same highly saturated green ticks leads to a flattened visual hierarchy, increasing the cognitive burden on users. The platform fails to effectively guide decisions through color, resulting in a decrease in users' selection efficiency. Neither side won.
 Individual verdicts: Fang [Grey] · Zhao [Grey] · Tian [Grey] · Xiao [Grey] · Agreed [Grey]
+
 Severity 0–4: Fang Ziqi [1] · Zhao Ronghui [1] · Tian Jingwen [1] · Xiao Qingyuan [2] · agreed [1]    Driver: learn around it (users must manually read and cross-reference every line to find differences) and how often (every visitor trying to compare the three plans experiences this friction). 
+
 Repair: The following repair is based on Finding 4 and the version B that we revised for the first time: Redesigning the benefits list to establish a clear visual hierarchy using color saturation and text contrast. First, change the checkmarks and text for baseline features shared across all tiers (like "Free 5G+ Access" and "Free Caller ID & local incoming calls") to a low-saturation light grey, while reserving the high-saturation green checkmarks strictly for features that upgrade across tiers. Second, increase the contrast of the category headers ("LOCAL DATA", "ROAMING", "CALLS & SMS") by changing them from light grey to bold black, creating strong structural dividers for easier scanning. Finally, change the blue text for "Multi-Destination Roaming" to a harmonious dark grey or black to match the main text, eliminating visual dissonance while keeping the pink annual price as the primary, attractive focal point of the card.
 
 Prediction: Assign participants a specific comparison task: “Identify the exact difference in roaming data and IDD minutes between the $21 and $31 plans.” We predict that the median task completion time will drop from approximately 18 seconds in Variant A to under 8 seconds in Variant B, and the accuracy of finding the correct differences will increase from 60% to 90%. We drop this repair if the completion time increases.
+
 Finding 10: Plan cards list raw prices and specs without indicating relative value or target audience 
+
 Where: The plan titles and feature lists across the three contract cards. (Screenshot 10)
+
 What the user sees and does: Users are presented with three cards that simply list monthly prices and raw technical specs (e.g., “500GB local data”, “500 mins”). The interface lacks any guidance on which plan offers the best value or which plan suits what kind of person. Consequently, users struggle to evaluate the real-life fit of these plans.
+
 Principle: W9 Identity signaling in product domains (Berger & Heath, 2007) and W10 Cultural differences in holistic vs. analytic thinking (Nisbett, 2003).
+
 Mechanism, whose goal wins: Western analytic thinking tends to isolate object attributes like raw GBs, whereas East Asian holistic thinking evaluates information by looking at the broader context and relationships. Additionally, consumers use products to express their identity, which is ineffective when a product is framed purely as a cold utility. By merely listing prices and specs without explaining the value or target audience, the platform strips away the context. This forces users into a purely analytical comparison where they rely on flawed heuristics—either under-buying out of strict price sensitivity or guessing arbitrarily due to choice overload. The platform fails to reliably steer users toward higher-value tiers, and users experience decision friction while missing out on plans that actually match their lifestyle. Neither side wins.
 Individual verdicts: Fang [Grey] · Zhao [Grey] · Tian [Grey] · Xiao [Grey] · Agreed [Grey]
+
 Severity 0–4: Fang Ziqi [1] · Zhao Ronghui [1] · Tian Jingwen [2] · Xiao Qingyuan [2] · agreed [2]    Driver: learn around it (users must mentally translate raw specs into lifestyle fit) and how often (affects every new user trying to choose a plan) 
+
 Repair: Restructure the top section of all three plan cards to provide a complete holistic context. Add a prominent lifestyle badge or sub-header directly below the price and raw data numbers on each card. For the $15 plan, add “Local Essential: Perfect for daily SG usage.” For $21 plan, add "Cross-Border Professional: Best value for frequent SG-China commuters." For the $31.1 plan, add "Regional Wanderer: Maximum freedom for heavy APAC travelers." 
+
 Prediction: Present participants with a specific task: “Imagine you are a professional or student who travels between Singapore and China frequently. Please evaluate and select the most suitable plan.” We predict the selection share of the $21 mid-tier plan among this target demographic will increase from approximately 30% in Variant A to 55% in Variant B, and self-reported decision ease (on a 1-5 scale) will improve by at least 1 point. We drop this repair if over 15% of participants state in the post-test debrief that the identity labels felt restrictive or made them feel excluded.
+
+
 Changes of previous finding:
 
 Finding 1 - The long-term costs are not very intuitive. Users can only see the monthly price.
+
 Prediction: Randomly show the original and revised versions. Ask users for the term total and month seven charge without giving them the answer. The accuracy moves from about 30% in A to 75% in B. We drop this repair if the purchase intent score (1–5 points) does not rise.
+
 What and why we want to change: Write "Abandon if purchase intent does not increase", but this modification was originally intended to make it clear that the total price is involved and the intention might decline. This does not mean failure. It should be changed to: guardrail: The intention should be no less than A and exceed 0.5 points (1–5 points).
+
 Improved version- Prediction: Participants are randomly shown Variant A or Variant B. Without being able to scroll back, they are asked: “What is the total you will pay over 12 months on the $15 plan, and what is the monthly charge in month 7?” An answer is correct only if both parts are right ($135 and $15.00). The share answering correctly moves from about 30% in A to 75% in B. Guardrail: mean sign-up intent (1–5) in B is not more than 0.5 points below A. We drop this repair if the correct-answer gain is under 25 percentage points, or if intent falls by more than 0.5 points.
 
 Finding 5 - Exit obligations are difficult to assess before signup
+
 Origin text-Repair: Directly display a prominent exit clause reminder above the main signing button:If you terminate your subscription before the end of the agreed period, there will be an Early Termination Charge, calculated as follows: Monthly Fee x Remaining months of the minimum subscription period (including the month in which termination occurs).
+
 What and why we want to change: After the first generation of Variant B, each package had the same text box and text, which resulted in content duplication and an unnecessary burden on the reader.
+
 Improved version- Repair: Instead of duplicating repetitive warning boxes inside each individual plan card (which creates visual clutter and processing disfluency), introduce a single, full-width global notification banner placed directly underneath the three package comparison cards: If you terminate your subscription before the end of the agreed period, there will be an Early Termination Charge, calculated as follows: Monthly Fee x Remaining months of the minimum subscription period (including the month in which termination occurs).
  
 Finding 6: Fragmented and overlapping regional roaming layers
+
 Origin text-Repair: Consolidate the multiple scattered roaming lines into a single master item on the main card: "Multi-Destination Roaming". Under this master label, provide a clean collapsible drawer ("View Coverage & Priority Details"). When expanded, it clearly lists the specific quotas by region (China & Hong Kong, Asia-Pacific, shared MY/TH/ID, and Global 210) alongside an explicit deduction priority rule. This keeps the primary card uncluttered while letting travelers easily check exact destination allowances without leaving the page. 
+
 What and why we want to change: After conducting a web search, we discovered that the order of priority-based charging for traffic has not been disclosed. Therefore, we deleted the relevant sections. And after the first Variant B was generated, we found that the text layout was always not conducive to smooth reading. Therefore, we proposed more detailed solutions.
+
 Improved version- Repair: Restructure the roaming benefits inside a clean collapsible section labeled "Multi-Destination Roaming — tap to see coverage". To prevent inventing unverified claims, remove any assumed deduction priority order. To eliminate visual clutter and cognitive fatigue caused by dense paragraph blocks, standardize every roaming item into a strictly aligned, two-paragraph visual format:   Paragraph 1: Display the data allowance and its renewal cycle in bold, high-contrast text (e.g., 5GB roaming data (per month) or 1TB shared roaming data (one pool, valid for 365 days)).   Paragraph 2 (with the beginning of Applicable Coverage): Display the destination scope in secondary, lighter font using a consistent prefix. 
+
 For example: 5GB roaming data 
-                      Applicable Coverage: Mainland China and Hong Kong SAR
+            Applicable Coverage: Mainland China and Hong Kong SAR
 
 
 
